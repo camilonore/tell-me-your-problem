@@ -1,0 +1,25 @@
+.header{
+  display: grid;
+  grid-template-columns: 25% auto 25%;
+  align-items: center;
+  padding: 0 5vw;
+  width: 100vw;
+  position: sticky;
+  border-bottom: 1px solid #c3c3c3;
+  height: 8vh;
+}
+.login{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+}
+.searchBar{
+  border: 1px solid #c3c3c3;
+  border-radius: 10px;
+  padding: 5px;
+}
+.logo{
+  margin: 0;
+}

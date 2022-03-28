@@ -1,0 +1,7 @@
+.main{
+  display: grid;
+  grid-template-columns: 70% 1fr;
+  width: 80vw;
+  margin: auto;
+  padding-top: 30px;
+}
