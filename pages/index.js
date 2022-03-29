@@ -1,7 +1,9 @@
 import Head from 'next/head'
+import Aside from '../components/Aside/Aside'
 import Card from '../components/Card/Card'
 import { Header } from '../components/Header/Header'
 import styles from '../styles/index.module.css'
+import { postsMock } from '../Mocks/postsMock'
 
 export default function Home () {
   return (
@@ -13,13 +15,19 @@ export default function Home () {
       </Head>
       <Header/>
       <main className={styles.main}>
-        <Card
-          author={'@CamiloNore'}
-          img={'https://picsum.photos/200'}
-          time={'5 hours ago'}
-          comments={'50'}
-          likes={50}
-        />
+        {
+          postsMock.map(post => {
+            return <Card
+              key={post.id}
+              author={post.author}
+              img={post.img}
+              time={post.time}
+              comments={post.comments}
+              likes={post.likes}
+            />
+          })
+        }
+      <Aside/>
       </main>
     </>
   )

@@ -3,7 +3,6 @@
   grid-template-columns: 25% auto 25%;
   align-items: center;
   padding: 0 5vw;
-  width: 100vw;
   position: sticky;
   border-bottom: 1px solid #c3c3c3;
   height: 8vh;
@@ -19,6 +18,7 @@
   border: 1px solid #c3c3c3;
   border-radius: 10px;
   padding: 5px;
+  font-size: 16px;
 }
 .logo{
   margin: 0;
