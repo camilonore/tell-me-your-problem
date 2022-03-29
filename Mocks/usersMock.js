@@ -20,7 +20,7 @@ const usersMock = [
     name: '@ElonMusk'
   },
   {
-    id: '@AlbertEintein',
+    id: '@AlbertEinstein',
     img: 'https://picsum.photos/200',
     name: '@AlbertEintein'
   }

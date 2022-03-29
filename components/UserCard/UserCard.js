@@ -5,7 +5,7 @@ const UserCard = ({ img, name }) => {
   return (
     <div className={styles.userCard}>
       <img src={img} alt={name} />
-      <Link href='https://google.com'>
+      <Link href={'/p/' + name}>
         <a>{name}</a>
       </Link>
     </div>

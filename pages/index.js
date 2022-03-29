@@ -19,7 +19,9 @@ export default function Home () {
           postsMock.map(post => {
             return <Card
               key={post.id}
+              id={post.id}
               author={post.author}
+              post={post.post}
               img={post.img}
               time={post.time}
               comments={post.comments}

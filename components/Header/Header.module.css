@@ -9,10 +9,7 @@
 }
 .login{
   display: flex;
-  flex-direction: row;
   justify-content: flex-end;
-  align-items: center;
-  gap: 20px;
 }
 .searchBar{
   border: 1px solid #c3c3c3;
@@ -22,4 +19,6 @@
 }
 .logo{
   margin: 0;
+  font-size: 24px;
+  font-weight: 700;
 }

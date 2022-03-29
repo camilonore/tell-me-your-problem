@@ -1,24 +1,23 @@
 import styles from './Card.module.css'
 import Link from 'next/link'
-const Card = ({ img, author, time, comments, likes }) => {
+const Card = ({ id, img, author, post, time, comments, likes }) => {
   return (
-    <section className={styles.card} >
-      <header className={styles.header} >
-        <img src={img} alt={author} className={styles.image}/>
-        <p className={styles.details}>
-          {author} • <label className={styles.time}>{time}</label>
-        </p>
-      </header>
-      <p>lorem ipsum dolor</p>
-      <footer className={styles.footer}>
-        <Link href='https://google.com'>
+    <Link href={'/post/' + id}>
+      <section className={styles.card}>
+        <header className={styles.header}>
+          <img src={img} alt={author} className={styles.image} />
+          <Link href={'/p/' + author}>
+            <a className={styles.author}>{author}</a>
+          </Link>
+          <label className={styles.time}>• {time}</label>
+        </header>
+        <p>{post}</p>
+        <footer className={styles.footer}>
           <a>📝 {comments} Comments</a>
-        </Link>
-        <Link href='https://google.com'>
           <a>♥ {likes} Likes</a>
-        </Link>
-      </footer>
-    </section>
+        </footer>
+      </section>
+    </Link>
   )
 }
 
