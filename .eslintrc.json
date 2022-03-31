@@ -6,8 +6,15 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "standard"
+        "plugin:@next/next/recommended",
+        "standard",
+        "eslint:recommended",
+        "next/core-web-vitals", 
+        "next"
     ],
+    "settings": {
+        "react": { "version": "detect" }
+    },
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
