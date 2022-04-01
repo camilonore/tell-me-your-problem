@@ -3,7 +3,7 @@ import Aside from '../components/Aside/Aside'
 import Card from '../components/Card/Card'
 import { Header } from '../components/Header/Header'
 import styles from '../styles/index.module.css'
-import { postsMock } from '../Mocks/postsMock'
+import { postsMock } from '../mocks/postsMock'
 
 export default function Home () {
   return (

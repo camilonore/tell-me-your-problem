@@ -1,6 +1,8 @@
 import NextAuth from 'next-auth'
 import GitHubProvider from 'next-auth/providers/github'
 import GoogleProvider from 'next-auth/providers/google'
+import { connectToDatabase } from '../../../Utils/connectDb'
+import { UserModel } from '../../../models/user'
 
 export default NextAuth({
   providers: [
@@ -15,5 +17,24 @@ export default NextAuth({
   ],
   theme: {
     colorScheme: 'light'
+  },
+  events: {
+    signIn ({ user }) {
+      const parsedUser = {
+        username: user.name,
+        img: user.image
+      };
+      (async () => {
+        await connectToDatabase()
+        const existUser = await UserModel.findOne({
+          username: user.name,
+          img: user.image
+        })
+        if (!existUser) {
+          const newUser = new UserModel(parsedUser)
+          newUser.save()
+        }
+      })()
+    }
   }
 })
