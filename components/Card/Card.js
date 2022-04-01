@@ -1,11 +1,18 @@
 import styles from './Card.module.css'
 import Link from 'next/link'
+import Image from 'next/image'
 const Card = ({ id, img, author, post, time, comments, likes }) => {
   return (
-    <Link href={'/post/' + id}>
+    <Link href={'/post/' + id} passHref>
       <section className={styles.card}>
         <header className={styles.header}>
-          <img src={img} alt={author} className={styles.image} />
+          <Image
+            width={40}
+            height={40}
+            src={img}
+            alt={author}
+            className={styles.image}
+          />
           <Link href={'/p/' + author}>
             <a className={styles.author}>{author}</a>
           </Link>
@@ -13,8 +20,14 @@ const Card = ({ id, img, author, post, time, comments, likes }) => {
         </header>
         <p>{post}</p>
         <footer className={styles.footer}>
-          <a>📝 {comments} Comments</a>
-          <a>♥ {likes} Likes</a>
+          <span>
+            <Image width={15} height={15} src='/message.svg' alt='messages' />
+            {comments} Comments
+          </span>
+          <span>
+            <Image width={15} height={15} src='/heart.svg' alt='heart' />
+            {likes} Likes{' '}
+          </span>
         </footer>
       </section>
     </Link>

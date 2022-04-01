@@ -1,3 +1,5 @@
+import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
 import styles from './ProfileHeader.module.css'
 
@@ -6,10 +8,12 @@ const ProfileHeader = ({ img }) => {
   return (
     <>
       <button className={styles.button} onClick={() => setModalOpen(prev => !prev)}>
-        <img className={styles.image} src={img} />
+        <Image height={50} width={50} alt='' className={styles.image} src={img} />
       </button>
       <div className={styles.modal} style={{ display: modalOpen ? 'block' : 'none' }}>
-        <a href='/api/auth/signout'>Log Out</a>
+        <Link href='/api/auth/signout'>
+          <a><Image src='/logout.svg' alt='' height={15} width={15} /> Log Out</a>
+        </Link>
       </div>
     </>
   )

@@ -1,6 +1,6 @@
 import UserCard from '../UserCard/UserCard'
 import styles from './Aside.module.css'
-import { usersMock } from '../../Mocks/usersMock'
+import { usersMock } from '../../mocks/usersMock'
 
 const Aside = () => {
   return (

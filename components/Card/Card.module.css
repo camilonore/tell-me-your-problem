@@ -22,8 +22,12 @@
   display: flex;
   gap: 20px;
 }
-.footer > a {
+.footer > span {
   color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 .image {
   border-radius: 50%;
