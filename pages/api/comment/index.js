@@ -1,19 +1,18 @@
 import { connectToDatabase } from '../../../Utils/connectDb'
 import { CommentModel } from '../../../models/comment'
-import { responseSuccess, responseError } from '../../../Utils/responses'
-import { isEmpty } from '../../../Utils/isEmpty'
+import { PostModel } from '../../../models/post'
+import { responseSuccess } from '../../../Utils/responses'
 
 export default async function handler (req, res) {
   if (req.method === 'POST') {
-    if (isEmpty({ ...req.body })) {
-      responseError(res, 'Invalid data', 400, 'Incomplete data')
-    } else {
-      await connectToDatabase()
-      const newComment = new CommentModel({ ...req.body })
-      const savedComment = await newComment.save((err) => {
-        if (err) responseError(res, 'Invalid data', 400, err)
-      })
-      responseSuccess(res, savedComment, 200)
+    await connectToDatabase()
+    const newComment = new CommentModel({ ...req.body })
+    const savedComment = await newComment.save()
+    const { postReference } = req.body
+    const update = {
+      comments: [savedComment._id]
     }
+    await PostModel.findByIdAndUpdate(postReference, update)
+    responseSuccess(res, savedComment, 200)
   }
 }
