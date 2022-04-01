@@ -20,7 +20,7 @@ export default NextAuth({
   },
   events: {
     signIn ({ user }) {
-      const parsedUser = {
+      const normalizedUser = {
         username: user.name,
         img: user.image
       };
@@ -31,7 +31,7 @@ export default NextAuth({
           img: user.image
         })
         if (!existUser) {
-          const newUser = new UserModel(parsedUser)
+          const newUser = new UserModel(normalizedUser)
           newUser.save()
         }
       })()
