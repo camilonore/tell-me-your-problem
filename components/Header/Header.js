@@ -6,7 +6,9 @@ import ProfileHeader from '../ProfileHeader/ProfileHeader'
 
 const notLogged = () => {
   return (
-    <Button label={'Sign In'} onClick={() => signIn()} background='black'/>
+    <Button onClick={() => signIn()}>
+      Sign In
+    </Button>
   )
 }
 const Header = () => {
