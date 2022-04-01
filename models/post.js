@@ -12,7 +12,13 @@ const postSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
-  }
+  },
+  comments: [
+    {
+      type: Schema.ObjectId,
+      ref: 'Comment'
+    }
+  ]
 })
 
 const PostModel = models.Post || model('Post', postSchema)
