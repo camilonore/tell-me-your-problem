@@ -1,8 +1,14 @@
 import { Schema, model, models } from 'mongoose'
 
 const userSchema = new Schema({
-  username: String,
-  img: String
+  username: {
+    type: String,
+    required: true
+  },
+  img: {
+    type: String,
+    required: true
+  }
 })
 
 const UserModel = models.User || model('User', userSchema)

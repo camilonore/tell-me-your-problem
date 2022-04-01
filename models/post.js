@@ -1,20 +1,18 @@
 import { Schema, model, models } from 'mongoose'
-
 const postSchema = new Schema({
   author: {
     type: Schema.ObjectId,
-    ref: 'User'
+    ref: 'User',
+    required: true
   },
-  body: String,
-  comments: {
-    type: Schema.ObjectId,
-    ref: 'Comment'
+  body: {
+    type: String,
+    required: true
   },
   date: {
     type: Date,
     default: Date.now
-  },
-  likes: Number
+  }
 })
 
 const PostModel = models.Post || model('Post', postSchema)

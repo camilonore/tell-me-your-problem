@@ -3,9 +3,13 @@ import { Schema, model, models } from 'mongoose'
 const commentSchema = new Schema({
   author: {
     type: Schema.ObjectId,
-    ref: 'User'
+    ref: 'User',
+    required: true
   },
-  body: String
+  body: {
+    type: String,
+    required: true
+  }
 })
 
 const CommentModel = models.Comment || model('Comment', commentSchema)
