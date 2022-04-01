@@ -10,7 +10,7 @@ export default async function handler (req, res) {
     const savedComment = await newComment.save()
     const { postReference } = req.body
     const update = {
-      comments: [savedComment._id]
+      $push: { comments: [savedComment._id] }
     }
     await PostModel.findByIdAndUpdate(postReference, update)
     responseSuccess(res, savedComment, 200)
