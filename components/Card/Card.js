@@ -13,7 +13,7 @@ const Card = ({ id, img, author, post, time, comments, likes }) => {
             alt={author}
             className={styles.image}
           />
-          <Link href={'/p/' + author}>
+          <Link href={'/profile/' + author}>
             <a className={styles.author}>{author}</a>
           </Link>
           <label className={styles.time}>• {time}</label>
