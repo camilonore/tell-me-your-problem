@@ -8,21 +8,14 @@ export default async function handler (req, res) {
   // TODO: Cache the data
   if (req.method === 'POST') {
     if (isEmpty({ ...req.body })) {
-      responseError(res, 'Check your data', 400, 'Incomplete data')
+      responseError(res, 'Invalid data', 400, 'Incomplete data')
     } else {
       await connectToDatabase()
       const newPost = new PostModel({ ...req.body })
-      await newPost.save((err) => {
+      const createdPost = await newPost.save((err) => {
         if (err) responseError(res, 'Invalid data', 400, err)
-        PostModel.find({})
-          .populate('author')
-          .exec((err, populatedData) => {
-            if (err) {
-              responseError(res, 'Internal error', 400, err)
-            }
-            responseSuccess(res, populatedData, 200)
-          })
       })
+      responseSuccess(res, createdPost, 200)
     }
   }
   if (req.method === 'GET') {

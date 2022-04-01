@@ -10,17 +10,10 @@ export default async function handler (req, res) {
     } else {
       await connectToDatabase()
       const newComment = new CommentModel({ ...req.body })
-      await newComment.save((err) => {
+      const savedComment = await newComment.save((err) => {
         if (err) responseError(res, 'Invalid data', 400, err)
-        CommentModel.find({})
-          .populate('author')
-          .exec((err, populatedData) => {
-            if (err) {
-              responseError(res, 'Internal error', 400, err)
-            }
-            responseSuccess(res, populatedData, 200)
-          })
       })
+      responseSuccess(res, savedComment, 200)
     }
   }
 }
