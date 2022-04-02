@@ -1,0 +1,16 @@
+.layoutIndex,
+.layoutPost {
+  width: 70vw;
+  max-width: 1248px;
+  display: grid;
+  grid-template-rows: 80px 1fr;
+  column-gap: 50px;
+  margin: 20px auto 0px auto;
+}
+.layoutIndex{
+  grid-template-columns: 70% 1fr;
+  row-gap: 30px;
+}
+.layoutPost{
+  grid-template-columns: 60% 1fr;
+}

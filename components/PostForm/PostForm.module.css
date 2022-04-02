@@ -1,0 +1,30 @@
+.form{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  gap: 30px;
+  height: fit-content;
+}
+.title,
+.text,
+.form{
+  border: 1px solid #c3c3c3;
+}
+.text,
+.title{
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 14px;
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+}
+.text{
+  max-height: 40vh;
+  min-height: 50px;
+}
+.form > button {
+  font-weight: 700;
+}

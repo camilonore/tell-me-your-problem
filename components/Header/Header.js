@@ -4,6 +4,8 @@ import { useSession, signIn } from 'next-auth/react'
 import styles from './Header.module.css'
 import ProfileHeader from '../ProfileHeader/ProfileHeader'
 
+// TODO: Header max-width
+
 const notLogged = () => {
   return (
     <Button onClick={() => signIn()}>
