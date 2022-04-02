@@ -21,20 +21,26 @@ export default NextAuth({
   events: {
     signIn ({ user }) {
       const normalizedUser = {
+        userId: user.id,
         username: user.name,
         img: user.image
       };
       (async () => {
         await connectToDatabase()
         const existUser = await UserModel.findOne({
-          username: user.name,
-          img: user.image
+          userId: user.id
         })
         if (!existUser) {
           const newUser = new UserModel(normalizedUser)
           newUser.save()
         }
       })()
+    }
+  },
+  callbacks: {
+    async session ({ session, user, token }) {
+      session.user.userId = token.sub
+      return session
     }
   }
 })

@@ -1,7 +1,7 @@
 import { connectToDatabase } from '../../../Utils/connectDb'
 import { CommentModel } from '../../../models/comment'
 import { PostModel } from '../../../models/post'
-import { responseSuccess } from '../../../Utils/responses'
+import { responseError, responseSuccess } from '../../../Utils/responses'
 
 export default async function handler (req, res) {
   if (req.method === 'POST') {
@@ -14,5 +14,7 @@ export default async function handler (req, res) {
     }
     await PostModel.findByIdAndUpdate(postReference, update)
     responseSuccess(res, savedComment, 200)
+  } else {
+    responseError(res, 'Only POST requests are allowed', 400, 'Invalid request')
   }
 }
