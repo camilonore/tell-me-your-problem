@@ -7,6 +7,7 @@ import { responseError, responseSuccess } from '../../../Utils/responses'
 // TODO: Check if the user exists
 // TODO: Cache the data
 // TODO: Check if data is valid, user shouldn't create empty values
+// TODO: Implement Likes
 
 export default async function handler (req, res) {
   if (req.method === 'POST') {

@@ -1,11 +1,12 @@
 .card {
   border: 1px solid #c3c3c3;
   border-radius: 10px;
-  padding: 20px;
+  padding: 20px 20px 5px 20px;
   display: grid;
   grid-template-rows: 20% auto 20%;
   align-items: center;
   width: 100%;
+  height: fit-content;
   grid-column: 1;
   cursor: pointer;
 }
@@ -46,4 +47,7 @@
 }
 .author:hover{
   text-decoration: underline;
+}
+.h3{
+  margin: 10px 0 0 0;
 }

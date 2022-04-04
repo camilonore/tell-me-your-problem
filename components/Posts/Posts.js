@@ -1,4 +1,5 @@
 import { usePosts } from '../../hooks/usePosts'
+import { normalizeDate } from '../../Utils/normalizeDate'
 import { PostCard } from '../PostCard/PostCard'
 
 const Posts = () => {
@@ -19,8 +20,9 @@ const Posts = () => {
               img={post.author.img}
               comments={post.comments.length}
               likes={'0'}
-              post={post.body.text}
-              time={post.date}
+              title={post.body.title}
+              text={post.body.text}
+              time={normalizeDate(post.date)}
             />
               )
             })

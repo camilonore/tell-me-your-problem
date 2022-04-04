@@ -10,6 +10,7 @@
 .layoutIndex{
   grid-template-columns: 70% 1fr;
   row-gap: 30px;
+  margin-bottom: 50px;
 }
 .layoutPost{
   grid-template-columns: 60% 1fr;

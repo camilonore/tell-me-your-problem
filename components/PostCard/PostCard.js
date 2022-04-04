@@ -1,7 +1,7 @@
 import styles from './PostCard.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
-const PostCard = ({ id, img, author, post, time, comments, likes }) => {
+const PostCard = ({ id, img, author, title, text, time, comments, likes }) => {
   return (
     <Link href={'/post/' + id} passHref>
       <section className={styles.card}>
@@ -18,7 +18,8 @@ const PostCard = ({ id, img, author, post, time, comments, likes }) => {
           </Link>
           <label className={styles.time}>• {time}</label>
         </header>
-        <p>{post}</p>
+        <h3 className={styles.h3}>{title}</h3>
+        <p>{text}</p>
         <footer className={styles.footer}>
           <span>
             <Image width={15} height={15} src='/message.svg' alt='messages' />
