@@ -1,7 +1,9 @@
 import { connectToDatabase } from '../../../Utils/connectDb'
 import { PostModel } from '../../../models/post'
 import { UserModel } from '../../../models/user'
-import { responseSuccess } from '../../../Utils/responses'
+import { CommentModel } from '../../../models/comment'
+import { responseError, responseSuccess } from '../../../Utils/responses'
+
 // TODO: Check if the user exists
 // TODO: Cache the data
 // TODO: Check if data is valid, user shouldn't create empty values
@@ -20,9 +22,13 @@ export default async function handler (req, res) {
   }
   if (req.method === 'GET') {
     await connectToDatabase()
-    const foundedPosts = await PostModel.find({})
-      .populate('author')
+    CommentModel()
+    PostModel.find({})
       .populate('comments')
-    responseSuccess(res, foundedPosts, 200)
+      .populate('author')
+      .exec((err, posts) => {
+        if (err) responseError(res, 'Internal error', 500, err)
+        responseSuccess(res, posts, 200)
+      })
   }
 }

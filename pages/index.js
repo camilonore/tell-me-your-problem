@@ -1,16 +1,16 @@
 import Head from 'next/head'
 import Aside from '../components/Aside/Aside'
-import Card from '../components/Card/Card'
 import { Header } from '../components/Header/Header'
 import Layout from '../styles/Layout.module.css'
-import { postsMock } from '../mocks/postsMock'
 import buttonStyles from '../components/Button/Button.module.css'
 import Image from 'next/image'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
+import { Posts } from '../components/Posts/Posts'
 
 export default function Home () {
   const { data: session } = useSession()
+
   return (
     <>
       <Head>
@@ -28,20 +28,7 @@ export default function Home () {
             </a>
           </Link>
         )}
-        {postsMock.map((post) => {
-          return (
-            <Card
-              key={post.id}
-              id={post.id}
-              author={post.author}
-              post={post.post}
-              img={post.img}
-              time={post.time}
-              comments={post.comments}
-              likes={post.likes}
-            />
-          )
-        })}
+        <Posts/>
         <Aside />
       </main>
     </>
