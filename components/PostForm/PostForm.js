@@ -1,11 +1,15 @@
 import { doPost } from '../../Utils/doPost'
 import { Button } from '../Button/Button'
 import { useSession } from 'next-auth/react'
-
+import Router from 'next/router'
+import { useState } from 'react'
 import styles from './PostForm.module.css'
+
 function PostForm () {
   const { data: session } = useSession()
+  const [disabled, setDisabled] = useState(false)
   const handleSubmit = (evt) => {
+    setDisabled(true)
     evt.preventDefault()
     const data = Object.fromEntries(new FormData(evt.target))
     const body = {
@@ -13,13 +17,17 @@ function PostForm () {
       body: { ...data },
       date: new Date(Date.now())
     }
-    doPost('/api/post', body)
+    doPost('/api/post', body).then(post => {
+      if (post.error === '') {
+        Router.push('/')
+      }
+    })
   }
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <input type='text' placeholder='Title...' className={styles.title} name='title' required/>
       <textarea placeholder='Text' className={styles.text} name='text' required />
-      <Button>Post it!</Button>
+      <Button disabled={disabled}>Post it!</Button>
     </form>
   )
 }
