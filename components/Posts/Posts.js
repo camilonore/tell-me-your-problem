@@ -1,5 +1,5 @@
 import { usePosts } from '../../hooks/usePosts'
-import Card from '../Card/Card'
+import { PostCard } from '../PostCard/PostCard'
 
 const Posts = () => {
   const { posts, loading } = usePosts('/api/post')
@@ -12,7 +12,7 @@ const Posts = () => {
         : (
             posts.map((post) => {
               return (
-            <Card
+            <PostCard
               key={post._id}
               id={post._id}
               author={post.author.username}

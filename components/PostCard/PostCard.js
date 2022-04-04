@@ -1,7 +1,7 @@
-import styles from './Card.module.css'
+import styles from './PostCard.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
-const Card = ({ id, img, author, post, time, comments, likes }) => {
+const PostCard = ({ id, img, author, post, time, comments, likes }) => {
   return (
     <Link href={'/post/' + id} passHref>
       <section className={styles.card}>
@@ -34,4 +34,4 @@ const Card = ({ id, img, author, post, time, comments, likes }) => {
   )
 }
 
-export default Card
+export { PostCard }
