@@ -6,7 +6,7 @@ import buttonStyles from '../components/Button/Button.module.css'
 import Image from 'next/image'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
-import { Posts } from '../components/Posts/Posts'
+import { PostsContainer } from '../components/PostsContainer/PostsContainer'
 
 export default function Home () {
   const { data: session } = useSession()
@@ -28,7 +28,7 @@ export default function Home () {
             </a>
           </Link>
         )}
-        <Posts/>
+        <PostsContainer/>
         <Aside />
       </main>
     </>

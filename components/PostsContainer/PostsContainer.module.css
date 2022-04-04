@@ -1,0 +1,8 @@
+.a{
+  cursor: pointer;
+  height: fit-content;
+  border-radius: 10px;
+}
+.a:hover > section{
+  border: 1px solid rgba(0, 0, 0, 0.6);
+}

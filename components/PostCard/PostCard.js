@@ -1,37 +1,23 @@
 import styles from './PostCard.module.css'
-import Link from 'next/link'
 import Image from 'next/image'
-const PostCard = ({ id, img, author, title, text, time, comments, likes }) => {
+import { PostHeader } from '../PostHeader/PostHeader'
+const PostCard = ({ post }) => {
   return (
-    <Link href={'/post/' + id} passHref>
       <section className={styles.card}>
-        <header className={styles.header}>
-          <Image
-            width={40}
-            height={40}
-            src={img}
-            alt={author}
-            className={styles.image}
-          />
-          <Link href={'/profile/' + author}>
-            <a className={styles.author}>{author}</a>
-          </Link>
-          <label className={styles.time}>• {time}</label>
-        </header>
-        <h3 className={styles.h3}>{title}</h3>
-        <p>{text}</p>
+        <PostHeader {...post}/>
+        <h3 className={styles.h3}>{post.body.title}</h3>
+        <p>{post.body.text}</p>
         <footer className={styles.footer}>
           <span>
             <Image width={15} height={15} src='/message.svg' alt='messages' />
-            {comments} Comments
+            {post.comments.length} Comments
           </span>
           <span>
             <Image width={15} height={15} src='/heart.svg' alt='heart' />
-            {likes} Likes{' '}
+            {'0'} Likes{' '}
           </span>
         </footer>
       </section>
-    </Link>
   )
 }
 
