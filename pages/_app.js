@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import { SessionProvider } from 'next-auth/react'
+import { PostProvider } from '../context/PostContext'
 
 export default function App ({
   Component,
@@ -7,7 +8,9 @@ export default function App ({
 }) {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <PostProvider>
+        <Component {...pageProps} />
+      </PostProvider>
     </SessionProvider>
   )
 }

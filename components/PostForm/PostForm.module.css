@@ -23,6 +23,7 @@
   max-width: 100%;
 }
 .text{
+  resize: vertical;
   max-height: 40vh;
   min-height: 50px;
 }

@@ -16,5 +16,6 @@ function normalizeDate (date) {
       return `${value} ${unit} ago`
     }
   }
+  return 'Just now'
 }
 export { normalizeDate }

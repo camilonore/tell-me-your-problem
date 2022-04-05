@@ -5,6 +5,7 @@ import Router from 'next/router'
 import { useState } from 'react'
 import styles from './PostForm.module.css'
 // TODO: check if error
+// TODO: get values from form
 function PostForm () {
   const { data: session } = useSession()
   const [disabled, setDisabled] = useState(false)

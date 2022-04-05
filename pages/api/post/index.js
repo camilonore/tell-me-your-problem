@@ -4,10 +4,10 @@ import { UserModel } from '../../../models/user'
 import { CommentModel } from '../../../models/comment'
 import { responseError, responseSuccess } from '../../../Utils/responses'
 
-// TODO: Check if the user exists
 // TODO: Cache the data
 // TODO: Check if data is valid, user shouldn't create empty values
 // TODO: Implement Likes
+// TODO: Serialize data in a component
 
 export default async function handler (req, res) {
   if (req.method === 'POST') {
@@ -27,9 +27,12 @@ export default async function handler (req, res) {
     PostModel.find({})
       .populate('comments')
       .populate('author')
-      .exec((err, posts) => {
-        if (err) responseError(res, 'Internal error', 500, err)
+      .sort({ date: -1 })
+      .exec()
+      .then(posts => {
         responseSuccess(res, posts, 200)
+      }).catch(err => {
+        responseError(res, 'Internal error', 500, err)
       })
   }
 }

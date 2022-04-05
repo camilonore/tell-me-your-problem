@@ -14,12 +14,19 @@ export default async function handler (req, res) {
         path: 'comments',
         populate: {
           path: 'author'
+        },
+        options: {
+          sort: {
+            date: -1
+          }
         }
       })
       .populate('author')
-      .exec((err, posts) => {
-        if (err) responseError(res, 'Internal error', 500, err)
+      .exec()
+      .then(posts => {
         responseSuccess(res, posts, 200)
+      }).catch(err => {
+        responseError(res, 'Internal error', 500, err)
       })
   } else {
     responseError(res, 'Only POST requests are allowed', 400, 'Invalid request')
