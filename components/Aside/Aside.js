@@ -5,6 +5,7 @@ const Aside = () => {
   return (
     <aside className={styles.aside}>
       <p>Popular Profiles</p>
+      <UserCard img={'https://picsum.photos/200'} name={'Elon Musk'}/>
       {/* {
         usersMock.map(user => {
           return <UserCard key={user.id} img={user.img} name={user.name}/>
