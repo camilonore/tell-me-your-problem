@@ -1,21 +1,29 @@
 function normalizeDate (date) {
   const DATE_UNITS = {
-    days: 172800,
-    day: 86400,
-    hours: 7200,
-    hour: 3600,
-    minutes: 60,
-    seconds: 1
+    moreThanOneDay: 86401,
+    yesterday: 86400,
+    h: 3600,
+    min: 60,
+    s: 1
   }
   const secondsdiff = (Date.now() - Date.parse(date)) / 1000
   const entries = Object.entries(DATE_UNITS)
   for (const [unit, secondsInUnit] of entries) {
-    const match = secondsdiff >= secondsInUnit || unit === 'second'
+    const match = secondsdiff >= secondsInUnit || unit === 's'
     if (match) {
       const value = Math.floor(secondsdiff / secondsInUnit)
-      return `${value} ${unit} ago`
+      if (unit === 'moreThanOneDay') {
+        const newDate = new Date(date)
+        const options = {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric'
+        }
+        return new Intl.DateTimeFormat('en-US', options).format(newDate)
+      }
+      return `${value}${unit}`
     }
   }
-  return 'Just now'
+  return 'Now'
 }
 export { normalizeDate }
