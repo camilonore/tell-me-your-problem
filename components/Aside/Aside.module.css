@@ -13,3 +13,8 @@
   font-weight: 700;
   margin: 0;
 }
+@media (max-width: 1024px) {
+  .aside{
+    display: none;
+  }
+}
