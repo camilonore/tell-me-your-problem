@@ -1,6 +1,4 @@
-import Head from 'next/head'
 import Aside from '../components/Aside/Aside'
-import { Header } from '../components/Header/Header'
 import Layout from '../styles/Layout.module.css'
 import buttonStyles from '../components/Button/Button.module.css'
 import Image from 'next/image'
@@ -13,12 +11,6 @@ export default function Home () {
 
   return (
     <>
-      <Head>
-        <title>TMYP - Tell Me Your Problem</title>
-        <meta name='description' content='TMYP - Tell Me Your Problem' />
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
-      <Header />
       <main className={Layout.layoutIndex} style={{ gridTemplateRows: session ? '30px 1fr' : 'none' }}>
         {session && (
           <Link href={'/post/newPost'} passHref>

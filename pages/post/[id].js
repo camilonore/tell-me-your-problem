@@ -1,4 +1,3 @@
-import { Header } from '../../components/Header/Header'
 import { PostCard } from '../../components/PostCard/PostCard'
 import { PostComment } from '../../components/PostComment/PostComment'
 import { CommentForm } from '../../components/CommentForm/CommentForm'
@@ -23,7 +22,6 @@ export default function PostById () {
 
   return (
     <>
-      <Header />
       <main className={styles.main}>
         {loading
           ? <h1>Loading...</h1>
