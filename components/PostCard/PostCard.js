@@ -10,11 +10,11 @@ const PostCard = ({ post }) => {
         <footer className={styles.footer}>
           <span>
             <Image width={15} height={15} src='/message.svg' alt='messages' />
-            {post.comments.length} Comments
+            {post.comments.length}
           </span>
           <span>
             <Image width={15} height={15} src='/heart.svg' alt='heart' />
-            {'0'} Likes{' '}
+            {'0'}
           </span>
         </footer>
       </section>

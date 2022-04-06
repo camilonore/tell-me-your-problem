@@ -13,7 +13,7 @@ function PostHeader (post) {
       alt={post.author.username}
       className={styles.image}
     />
-    <Link href={'/profile/' + post.author.username}>
+    <Link href={'/user/' + post.author._id}>
       <a className={styles.author}>{post.author.username}</a>
     </Link>
     <label className={styles.time}>•</label>
