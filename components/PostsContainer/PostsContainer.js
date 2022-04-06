@@ -2,15 +2,14 @@ import Link from 'next/link'
 import { usePosts } from '../../hooks/usePosts'
 import { PostCard } from '../PostCard/PostCard'
 import styles from './PostsContainer.module.css'
+import { Loading } from '../Loading/Loading'
 
 const PostsContainer = () => {
   const { posts, loading } = usePosts('/api/post')
   return (
     <>
       {loading
-        ? (
-        <h2>Loading...</h2>
-          )
+        ? <Loading/>
         : (
             posts.map((post) => {
               return (
