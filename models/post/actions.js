@@ -5,17 +5,25 @@ import { PostModel } from './post'
 // TODO: Add Likes implementation
 
 async function newPost (post) {
-  const newPost = new PostModel({ ...post })
-  return await newPost.save()
+  try {
+    const newPost = new PostModel({ ...post })
+    return await newPost.save()
+  } catch (error) {
+    return error
+  }
 }
 
 async function getAllPosts () {
-  const posts = await PostModel.find({})
-    .populate('comments')
-    .populate('author')
-    .sort({ date: -1 })
-    .exec()
-  return posts
+  try {
+    const posts = await PostModel.find({})
+      .populate('comments')
+      .populate('author')
+      .sort({ date: -1 })
+      .exec()
+    return posts
+  } catch (error) {
+    return error
+  }
 }
 
 async function getPostById (id) {
@@ -36,28 +44,34 @@ async function getPostById (id) {
       .populate('author')
       .exec()
     return post
-  } catch (err) {
-    return err
+  } catch (error) {
+    return error
   }
 }
 
 async function findPostByIdAndUpdate (postReference, update) {
-  const post = await PostModel.findByIdAndUpdate(postReference, update, { returnDocument: 'after' })
-    .populate('comments')
-    .populate({
-      path: 'comments',
-      populate: {
-        path: 'author'
-      },
-      options: {
-        sort: {
-          date: -1
-        }
-      }
+  try {
+    const post = await PostModel.findByIdAndUpdate(postReference, update, {
+      returnDocument: 'after'
     })
-    .populate('author')
-    .exec()
-  return post
+      .populate('comments')
+      .populate({
+        path: 'comments',
+        populate: {
+          path: 'author'
+        },
+        options: {
+          sort: {
+            date: -1
+          }
+        }
+      })
+      .populate('author')
+      .exec()
+    return post
+  } catch (error) {
+    return error
+  }
 }
 
 export { newPost, getAllPosts, getPostById, findPostByIdAndUpdate }

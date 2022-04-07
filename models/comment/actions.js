@@ -1,8 +1,12 @@
 import { CommentModel } from './comment'
 
 async function newComment (comment) {
-  const newComment = new CommentModel({ ...comment })
-  return await newComment.save()
+  try {
+    const newComment = new CommentModel({ ...comment })
+    return await newComment.save()
+  } catch (error) {
+    return error
+  }
 }
 
 export { newComment }

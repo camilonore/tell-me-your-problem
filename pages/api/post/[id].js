@@ -1,7 +1,7 @@
 import { connectToDatabase } from '../../../Utils/connectDb'
 import { responseError, responseSuccess } from '../../../Utils/responses'
 import { getPostById } from '../../../models/post/actions'
-// TODO: HERE IS THE ERROR HANDLING
+
 export default async function handler (req, res) {
   if (req.method === 'GET') {
     await connectToDatabase()

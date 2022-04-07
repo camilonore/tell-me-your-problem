@@ -13,7 +13,12 @@ const ProfileHeader = ({ img }) => {
       </button>
       <div className={styles.modal} style={{ display: modalOpen ? 'block' : 'none' }}>
         <Link href='/api/auth/signout' passHref>
-          <Logout/>
+          <a>
+            <span>
+              <Logout height={15} width={15}/>
+            </span>
+            Logout
+          </a>
         </Link>
       </div>
     </>
