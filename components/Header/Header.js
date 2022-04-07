@@ -3,7 +3,7 @@ import { Button } from '../Button/Button'
 import { useSession, signIn } from 'next-auth/react'
 import styles from './Header.module.css'
 import ProfileHeader from '../ProfileHeader/ProfileHeader'
-import Search from '../../icons/Search'
+import { Search } from '../../icons/Search'
 
 const notLogged = () => {
   return <Button onClick={() => signIn()}>Sign In</Button>

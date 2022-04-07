@@ -15,4 +15,4 @@ const Search = (props) => (
   </svg>
 )
 
-export default Search
+export { Search }

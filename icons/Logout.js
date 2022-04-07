@@ -17,4 +17,4 @@ const Logout = (props) => (
   </svg>
 )
 
-export default Logout
+export { Logout }

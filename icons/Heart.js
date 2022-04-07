@@ -16,4 +16,4 @@ const Heart = (props) => (
   </svg>
 )
 
-export default Heart
+export { Heart }

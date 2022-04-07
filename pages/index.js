@@ -4,7 +4,7 @@ import buttonStyles from '../components/Button/Button.module.css'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { PostsContainer } from '../components/PostsContainer/PostsContainer'
-import Pencil from '../icons/Pencil'
+import { Pencil } from '../icons/Pencil'
 
 export default function Home () {
   const { data: session } = useSession()

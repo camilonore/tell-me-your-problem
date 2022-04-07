@@ -15,4 +15,4 @@ const Message = (props) => (
   </svg>
 )
 
-export default Message
+export { Message }

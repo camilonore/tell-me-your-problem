@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
-import Logout from '../../icons/Logout'
+import { Logout } from '../../icons/Logout'
 import styles from './ProfileHeader.module.css'
 
 const ProfileHeader = ({ img }) => {

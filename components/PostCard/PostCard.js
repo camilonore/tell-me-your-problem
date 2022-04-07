@@ -1,7 +1,7 @@
 import styles from './PostCard.module.css'
 import { PostHeader } from '../PostHeader/PostHeader'
-import Message from '../../icons/Message'
-import Heart from '../../icons/Heart'
+import { Message } from '../../icons/Message'
+import { Heart } from '../../icons/Heart'
 const PostCard = ({ post }) => {
   return (
       <section className={styles.card}>

@@ -17,4 +17,4 @@ const Pencil = (props) => (
   </svg>
 )
 
-export default Pencil
+export { Pencil }
