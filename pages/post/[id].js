@@ -8,8 +8,6 @@ import { useRouter } from 'next/router'
 import styles from './PostById.module.css'
 import { Loading } from '../../components/Loading/Loading'
 
-// TODO: Only registered user can comment
-
 export default function PostById () {
   const { data: session } = useSession()
   const router = useRouter()

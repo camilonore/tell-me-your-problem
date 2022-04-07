@@ -5,7 +5,6 @@ import styles from './Header.module.css'
 import ProfileHeader from '../ProfileHeader/ProfileHeader'
 import Search from '../../icons/Search'
 
-// TODO: icon component
 const notLogged = () => {
   return <Button onClick={() => signIn()}>Sign In</Button>
 }

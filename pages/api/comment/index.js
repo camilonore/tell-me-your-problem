@@ -1,8 +1,8 @@
 import { connectToDatabase } from '../../../Utils/connectDb'
-import { CommentModel } from '../../../models/comment'
-import { UserModel } from '../../../models/user'
-import { PostModel } from '../../../models/post'
+import { UserModel } from '../../../models/user/user'
 import { responseError, responseSuccess } from '../../../Utils/responses'
+import { findPostByIdAndUpdate } from '../../../models/post/actions'
+import { newComment } from '../../../models/comment/actions'
 
 export default async function handler (req, res) {
   if (req.method === 'POST') {
@@ -12,32 +12,13 @@ export default async function handler (req, res) {
       ...req.body,
       author: _id
     }
-    const newComment = new CommentModel({ ...serializedData })
-    const savedComment = await newComment.save()
+    const savedComment = await newComment(serializedData)
     const { postReference } = req.body
     const update = {
       $push: { comments: [savedComment._id] }
     }
-    PostModel.findByIdAndUpdate(postReference, update, { returnDocument: 'after' })
-      .populate('comments')
-      .populate({
-        path: 'comments',
-        populate: {
-          path: 'author'
-        },
-        options: {
-          sort: {
-            date: -1
-          }
-        }
-      })
-      .populate('author')
-      .exec()
-      .then(posts => {
-        responseSuccess(res, posts, 200)
-      }).catch(err => {
-        responseError(res, 'Check your data', 400, err)
-      })
+    const posts = await findPostByIdAndUpdate(postReference, update)
+    responseSuccess(res, posts, 200)
   } else {
     responseError(res, 'Only POST requests are allowed', 400, 'Invalid request')
   }
