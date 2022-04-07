@@ -1,3 +1,4 @@
+import { CommentModel } from '../comment/comment'
 import { PostModel } from './post'
 
 // TODO: Divide the comments from the post model
@@ -14,6 +15,7 @@ async function newPost (post) {
 }
 
 async function getAllPosts () {
+  CommentModel()
   try {
     const posts = await PostModel.find({})
       .populate('comments')
