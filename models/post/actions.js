@@ -1,6 +1,7 @@
 import { PostModel } from './post'
 
 // TODO: Divide the comments from the post model
+// TODO: Oh my gosh with the population
 
 async function newPost (post) {
   const newPost = new PostModel({ ...post })
