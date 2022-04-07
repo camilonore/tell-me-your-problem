@@ -7,12 +7,14 @@ import { useContext, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import styles from './PostById.module.css'
 import { Loading } from '../../components/Loading/Loading'
+import { NotFound } from '../../components/NotFound/NotFound'
 
 export default function PostById () {
   const { data: session } = useSession()
   const router = useRouter()
   const {
     post,
+    error,
     loading,
     setQuery
   } = useContext(PostContext)
@@ -23,7 +25,7 @@ export default function PostById () {
     }
   }, [router.query.id, setQuery])
 
-  function UserComment () {
+  function CanUserComment () {
     if (session) {
       return (
         <section className={styles.postSection}>
@@ -42,8 +44,9 @@ export default function PostById () {
     <>
       <main className={styles.main}>
         {loading && <Loading/>}
-        {!loading && <UserComment/>}
-        {!loading &&
+        {!loading && error && <NotFound/>}
+        {!loading && !error && <CanUserComment/>}
+        {!loading && !error &&
           post.comments.map((comment) => {
             return <PostComment comment={comment} key={comment._id} />
           })

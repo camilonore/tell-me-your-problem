@@ -1,14 +1,18 @@
 import { connectToDatabase } from '../../../Utils/connectDb'
 import { responseError, responseSuccess } from '../../../Utils/responses'
 import { getPostById } from '../../../models/post/actions'
-
+// TODO: HERE IS THE ERROR HANDLING
 export default async function handler (req, res) {
   if (req.method === 'GET') {
     await connectToDatabase()
     const { id } = req.query
     const post = await getPostById(id)
-    responseSuccess(res, post, 200)
+    if (post instanceof Error) {
+      const error = `${post.name}: ${post.message}`
+      return responseError(res, post.message, 400, error)
+    }
+    return responseSuccess(res, post, 200)
   } else {
-    responseError(res, 'Only POST requests are allowed', 400, 'Invalid request')
+    return responseError(res, 'Only POST requests are allowed', 400, 'Invalid request')
   }
 }

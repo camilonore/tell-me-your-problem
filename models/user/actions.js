@@ -1,5 +1,7 @@
 import { UserModel } from './user'
 
+// TODO: Get Users
+// TODO: Popular Users
 async function newUser (user) {
   const newUser = new UserModel(user)
   return await newUser.save()

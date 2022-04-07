@@ -18,8 +18,8 @@ export default async function handler (req, res) {
       $push: { comments: [savedComment._id] }
     }
     const posts = await findPostByIdAndUpdate(postReference, update)
-    responseSuccess(res, posts, 200)
+    return responseSuccess(res, posts, 200)
   } else {
-    responseError(res, 'Only POST requests are allowed', 400, 'Invalid request')
+    return responseError(res, 'Only POST requests are allowed', 400, 'Invalid request')
   }
 }

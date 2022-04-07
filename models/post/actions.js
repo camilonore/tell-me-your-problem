@@ -2,6 +2,7 @@ import { PostModel } from './post'
 
 // TODO: Divide the comments from the post model
 // TODO: Oh my gosh with the population
+// TODO: Add Likes implementation
 
 async function newPost (post) {
   const newPost = new PostModel({ ...post })
@@ -18,22 +19,26 @@ async function getAllPosts () {
 }
 
 async function getPostById (id) {
-  const post = await PostModel.findById(id)
-    .populate('comments')
-    .populate({
-      path: 'comments',
-      populate: {
-        path: 'author'
-      },
-      options: {
-        sort: {
-          date: -1
+  try {
+    const post = await PostModel.findById(id)
+      .populate('comments')
+      .populate({
+        path: 'comments',
+        populate: {
+          path: 'author'
+        },
+        options: {
+          sort: {
+            date: -1
+          }
         }
-      }
-    })
-    .populate('author')
-    .exec()
-  return post
+      })
+      .populate('author')
+      .exec()
+    return post
+  } catch (err) {
+    return err
+  }
 }
 
 async function findPostByIdAndUpdate (postReference, update) {
