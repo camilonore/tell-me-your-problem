@@ -8,6 +8,7 @@ import { Pencil } from '../icons/Pencil'
 
 export default function Home () {
   const { data: session } = useSession()
+  // TODO: Button go top
 
   return (
     <>

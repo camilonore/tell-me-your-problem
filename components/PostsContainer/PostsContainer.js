@@ -7,7 +7,7 @@ import { Loading } from '../Loading/Loading'
 const PostsContainer = () => {
   const { posts, loading } = usePosts('/api/post')
   return (
-    <>
+    <section className={styles.container}>
       {loading
         ? <Loading/>
         : (
@@ -21,7 +21,7 @@ const PostsContainer = () => {
               )
             })
           )}
-    </>
+    </section>
   )
 }
 
