@@ -1,10 +1,10 @@
 import Aside from '../components/Aside/Aside'
 import Layout from '../styles/Layout.module.css'
 import buttonStyles from '../components/Button/Button.module.css'
-import Image from 'next/image'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { PostsContainer } from '../components/PostsContainer/PostsContainer'
+import Pencil from '../icons/Pencil'
 
 export default function Home () {
   const { data: session } = useSession()
@@ -15,7 +15,7 @@ export default function Home () {
         {session && (
           <Link href={'/post/newPost'} passHref>
             <a className={buttonStyles.button}>
-              <Image src={'/pencil.svg'} width={18} height={18} alt='' />
+              <Pencil width={15}/>
               New Post
             </a>
           </Link>

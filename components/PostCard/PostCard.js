@@ -1,6 +1,7 @@
 import styles from './PostCard.module.css'
-import Image from 'next/image'
 import { PostHeader } from '../PostHeader/PostHeader'
+import Message from '../../icons/Message'
+import Heart from '../../icons/Heart'
 const PostCard = ({ post }) => {
   return (
       <section className={styles.card}>
@@ -9,11 +10,11 @@ const PostCard = ({ post }) => {
         <p>{post.body.text}</p>
         <footer className={styles.footer}>
           <span>
-            <Image width={15} height={15} src='/message.svg' alt='messages' />
+            <Message width={18} height={18}/>
             {post.comments.length}
           </span>
           <span>
-            <Image width={15} height={15} src='/heart.svg' alt='heart' />
+            <Heart width={18} height={18}/>
             {'0'}
           </span>
         </footer>

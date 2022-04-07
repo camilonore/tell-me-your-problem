@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
+import Logout from '../../icons/Logout'
 import styles from './ProfileHeader.module.css'
 
 const ProfileHeader = ({ img }) => {
@@ -11,8 +12,8 @@ const ProfileHeader = ({ img }) => {
         <Image height={50} width={50} alt='' className={styles.image} src={img} />
       </button>
       <div className={styles.modal} style={{ display: modalOpen ? 'block' : 'none' }}>
-        <Link href='/api/auth/signout'>
-          <a><Image src='/logout.svg' alt='' height={15} width={15} /> Log Out</a>
+        <Link href='/api/auth/signout' passHref>
+          <Logout/>
         </Link>
       </div>
     </>
