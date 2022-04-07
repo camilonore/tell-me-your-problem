@@ -4,8 +4,8 @@ import { getPostById } from '../../../models/post/actions'
 
 export default async function handler (req, res) {
   if (req.method === 'GET') {
-    const { id } = req.query
     await connectToDatabase()
+    const { id } = req.query
     const post = await getPostById(id)
     responseSuccess(res, post, 200)
   } else {

@@ -1,4 +1,4 @@
-import { connect } from 'mongoose'
+import { connect, connection } from 'mongoose'
 
 const USER = process.env.DB_USER
 const PASSWORD = process.env.DB_PASSWORD
@@ -7,6 +7,8 @@ const NAME = process.env.DB_NAME
 const MONGO_URI = `mongodb+srv://${USER}:${PASSWORD}@${HOST}/${NAME}?retryWrites=true&w=majority`
 
 async function connectToDatabase () {
+  if (connection.db) return
+
   connect(MONGO_URI).then(() => {
     console.log('[Database] Connected successfully')
   }).catch((error) => {
