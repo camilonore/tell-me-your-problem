@@ -1,8 +1,8 @@
 import { connectToDatabase } from '../../../Utils/connectDb'
-import { UserModel } from '../../../models/user/user'
 import { CommentModel } from '../../../models/comment/comment'
 import { responseSuccess } from '../../../Utils/responses'
 import { getAllPosts, newPost } from '../../../models/post/actions'
+import { findOneUser } from '../../../models/user/actions'
 
 // TODO: Cache the data
 // TODO: Check if data is valid, user shouldn't create empty values
@@ -13,7 +13,7 @@ import { getAllPosts, newPost } from '../../../models/post/actions'
 export default async function handler (req, res) {
   if (req.method === 'POST') {
     await connectToDatabase()
-    const { _id } = await UserModel.findOne({ userId: req.body.author })
+    const { _id } = await findOneUser(req.body.author)
     const serializedData = {
       ...req.body,
       author: _id

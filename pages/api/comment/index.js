@@ -1,13 +1,13 @@
 import { connectToDatabase } from '../../../Utils/connectDb'
-import { UserModel } from '../../../models/user/user'
 import { responseError, responseSuccess } from '../../../Utils/responses'
 import { findPostByIdAndUpdate } from '../../../models/post/actions'
 import { newComment } from '../../../models/comment/actions'
+import { findOneUser } from '../../../models/user/actions'
 
 export default async function handler (req, res) {
   if (req.method === 'POST') {
     await connectToDatabase()
-    const { _id } = await UserModel.findOne({ userId: req.body.author })
+    const { _id } = await findOneUser(req.body.author)
     const serializedData = {
       ...req.body,
       author: _id
