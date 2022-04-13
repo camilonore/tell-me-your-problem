@@ -1,4 +1,4 @@
-import { connectToDatabase } from '../../../Utils/connectDb'
+import { connectToDatabase } from '../../../services/connectDb'
 import { responseError, responseSuccess } from '../../../Utils/responses'
 import { findPostByIdAndUpdate } from '../../../models/post/actions'
 import { newComment } from '../../../models/comment/actions'

@@ -1,6 +1,6 @@
 import { Button } from '../Button/Button'
 import { useState, useContext } from 'react'
-import { doPost } from '../../Utils/doPost'
+import { doPost } from '../../services/doPost'
 import { useSession } from 'next-auth/react'
 import Router from 'next/router'
 import styles from './CommentForm.module.css'

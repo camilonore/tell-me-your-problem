@@ -1,7 +1,7 @@
 import NextAuth from 'next-auth'
 import GitHubProvider from 'next-auth/providers/github'
 import GoogleProvider from 'next-auth/providers/google'
-import { connectToDatabase } from '../../../Utils/connectDb'
+import { connectToDatabase } from '../../../services/connectDb'
 import { findOneUser, newUser } from '../../../models/user/actions'
 
 export default NextAuth({

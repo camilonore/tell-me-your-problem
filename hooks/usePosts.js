@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { doGet } from '../Utils/doGet'
+import { doGet } from '../services/doGet'
 
 function usePosts (url) {
   const [loading, setLoading] = useState(false)

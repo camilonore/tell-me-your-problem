@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from 'react'
-import { doGet } from '../Utils/doGet'
+import { doGet } from '../services/doGet'
 
 const PostContext = createContext()
 

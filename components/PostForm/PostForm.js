@@ -1,4 +1,4 @@
-import { doPost } from '../../Utils/doPost'
+import { doPost } from '../../services/doPost'
 import { Button } from '../Button/Button'
 import { useSession } from 'next-auth/react'
 import Router from 'next/router'

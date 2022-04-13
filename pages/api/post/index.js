@@ -1,4 +1,4 @@
-import { connectToDatabase } from '../../../Utils/connectDb'
+import { connectToDatabase } from '../../../services/connectDb'
 import { responseSuccess, responseError } from '../../../Utils/responses'
 import { getAllPosts, newPost } from '../../../models/post/actions'
 import { findOneUser } from '../../../models/user/actions'
