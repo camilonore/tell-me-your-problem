@@ -7,7 +7,7 @@ import styles from './CommentForm.module.css'
 import { PostContext } from '../../context/PostContext'
 
 function CommentForm () {
-  const [disabled, setDisabled] = useState(false)
+  const [disabled, setDisabled] = useState(false) // TODO: {3} custom hook with postCard
   const { setPost } = useContext(PostContext)
   const { data: session } = useSession()
 
@@ -21,7 +21,7 @@ function CommentForm () {
       date: new Date(Date.now()),
       postReference: Router.query.id
     }
-    doPost('/api/comment', body).then((post) => {
+    doPost('/api/post/comment', body).then((post) => {
       evt.target.body.value = ''
       setPost({ ...post.body })
       setDisabled(false)

@@ -2,13 +2,12 @@
   border-radius: 10px;
   outline: none;
   cursor: pointer;
-  border: 1px solid transparent;
   padding: 5px 10px;
   font-weight: 700;
   width: fit-content;
   background-color: #fff;
   color: #000;
-  border: 1px solid #000;
+  border: 1px solid #cecece;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,8 +17,11 @@
 .button:hover,
 .button:focus{
   box-shadow:
-  0.6px 0.6px 0.8px rgba(0, 0, 0, 0.4),
-  4px 4px 4px rgba(0, 0, 0, 0.2);
+  0.5px 0.5px 0.5px rgba(0, 0, 0, 0.013),
+  0.8px 0.8px 0.9px rgba(0, 0, 0, 0.033),
+  1.1px 1.1px 1.2px rgba(0, 0, 0, 0.061),
+  1.4px 1.4px 1.6px rgba(0, 0, 0, 0.102),
+  2px 2px 2px rgba(0, 0, 0, 0.2);
   transform: translate(-1px, -1px);
 }
 .button:disabled{

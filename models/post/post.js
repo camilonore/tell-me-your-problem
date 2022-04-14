@@ -24,6 +24,11 @@ const postSchema = new Schema({
       type: Schema.ObjectId,
       ref: 'Comment'
     }
+  ],
+  likes: [
+    {
+      type: Number
+    }
   ]
 })
 
