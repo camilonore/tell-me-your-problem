@@ -26,7 +26,7 @@ const Aside = () => {
       {loading
         ? <Loading />
         : users.map((user) => {
-          return <UserCard key={user.id} img={user.img} name={user.username} />
+          return <UserCard key={user._id} img={user.img} name={user.username} id={user._id} />
         }
         )}
     </aside>

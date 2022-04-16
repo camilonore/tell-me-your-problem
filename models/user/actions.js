@@ -1,7 +1,5 @@
 import { UserModel } from './user'
 
-// TODO: Get Users
-// TODO: Popular Users
 async function newUser (user) {
   try {
     const newUser = new UserModel(user)
@@ -20,7 +18,6 @@ async function findOneUser (userId) {
     return error
   }
 }
-
 async function getPopularUsers () {
   try {
     const users = await UserModel.find({})

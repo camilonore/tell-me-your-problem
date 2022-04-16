@@ -5,7 +5,7 @@ import Router from 'next/router'
 import { useState } from 'react'
 import styles from './PostForm.module.css'
 // TODO: check if error
-// TODO: get values from form
+// TODO: get values from form (abstraction)
 // TODO: Class for request
 function PostForm () {
   const { data: session } = useSession()
