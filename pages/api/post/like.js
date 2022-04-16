@@ -4,9 +4,15 @@ import {
   findPostByIdAndUpdate,
   getPostById
 } from '../../../models/post/actions'
+import { getSession } from 'next-auth/react'
 
 export default async function like (req, res) {
   if (req.method === 'POST') {
+    const session = await getSession({ req })
+    if (!session) {
+      const error = 'Unauthorized'
+      return responseError(res, error, 401, error)
+    }
     await connectToDatabase()
     const { id } = req.body
     const { author } = req.body

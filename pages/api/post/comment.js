@@ -3,13 +3,19 @@ import { responseError, responseSuccess } from '../../../Utils/responses'
 import { findPostByIdAndUpdate } from '../../../models/post/actions'
 import { newComment } from '../../../models/comment/actions'
 import { findOneUser } from '../../../models/user/actions'
+import { getSession } from 'next-auth/react'
 
 // TODO: Extract Validations
 
 export default async function handler (req, res) {
   if (req.method === 'POST') {
+    const session = await getSession({ req })
+    if (!session) {
+      const error = 'Unauthorized'
+      return responseError(res, error, 401, error)
+    }
     if (!req.body.postReference) {
-      const error = 'The postReference is required'
+      const error = 'postReference is required'
       return responseError(res, error, 400, error)
     }
     await connectToDatabase()

@@ -7,7 +7,7 @@ import styles from './CommentForm.module.css'
 import { PostContext } from '../../context/PostContext'
 
 function CommentForm () {
-  const [disabled, setDisabled] = useState(false) // TODO: {3} custom hook with postCard
+  const [disabled, setDisabled] = useState(false)
   const { setPost } = useContext(PostContext)
   const { data: session } = useSession()
 
