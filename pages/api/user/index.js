@@ -1,8 +1,14 @@
-import { responseError } from '../../../Utils/responses'
+import { responseError, responseSuccess } from '../../../Utils/responses'
+import { getPopularUsers } from '../../../models/user/actions'
 
-export default function handler (req, res) {
+export default async function handler (req, res) {
   if (req.method === 'GET') {
-    res.send('Get comments')
+    const users = await getPopularUsers()
+    if (users instanceof Error) {
+      const error = `${users.name}: ${users.message}`
+      return responseError(res, users.message, 400, error)
+    }
+    return responseSuccess(res, users, 200)
   } else {
     return responseError(
       res,

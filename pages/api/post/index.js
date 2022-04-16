@@ -4,8 +4,6 @@ import { getAllPosts, newPost } from '../../../models/post/actions'
 import { findOneUser } from '../../../models/user/actions'
 import { getSession } from 'next-auth/react'
 
-// TODO: Max length in the responses
-
 export default async function handler (req, res) {
   if (req.method === 'POST') {
     const session = await getSession({ req })

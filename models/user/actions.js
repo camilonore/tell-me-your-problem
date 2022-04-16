@@ -21,4 +21,14 @@ async function findOneUser (userId) {
   }
 }
 
-export { newUser, findOneUser }
+async function getPopularUsers () {
+  try {
+    const users = await UserModel.find({})
+      .limit(5)
+    return users
+  } catch (error) {
+    return error
+  }
+}
+
+export { newUser, findOneUser, getPopularUsers }

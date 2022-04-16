@@ -1,10 +1,6 @@
 import { CommentModel } from '../comment/comment'
 import { PostModel } from './post'
 
-// TODO: Divide the comments from the post model
-// TODO: Oh my gosh with the population
-// TODO: Add Likes implementation
-
 async function newPost (post) {
   try {
     const newPost = new PostModel({ ...post })
@@ -18,6 +14,7 @@ async function getAllPosts () {
   CommentModel()
   try {
     const posts = await PostModel.find({})
+      // .limit(10)
       .populate('comments')
       .populate('author')
       .sort({ date: -1 })
