@@ -1,5 +1,16 @@
+import styles from './Loading.module.css'
+
 function Loading () {
-  return <h1>Loading...</h1>
+  return (
+    <div className={styles.container}>
+      <div className={styles.loader}>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  )
 }
 
 export { Loading }
