@@ -16,7 +16,8 @@ export default NextAuth({
     })
   ],
   theme: {
-    colorScheme: 'light'
+    colorScheme: 'light',
+    logo: '/logo.jpg'
   },
   events: {
     signIn ({ user }) {
